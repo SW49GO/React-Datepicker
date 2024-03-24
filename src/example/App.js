@@ -8,7 +8,7 @@ function App() {
   }
   return (
    <div style={{margin:'5rem'}}>
-    <DatePickerReact onSelect={handleSeletedDate} language={'en'} textLabel={'Date of birth'}/>
+    <DatePickerReact onSelect={handleSeletedDate} language={'en'} textLabel={'Date of birth'} bckColor={'red'} dateColor={'yellow'}/>
    </div>
   )
 }
