@@ -55,5 +55,3 @@ function App() {
 - bckColor (string) : background color of the datepicker
 - dateColor (string) : color of the day when mouseOver
 - onSelect (function) : callback function to return the date choosen
-
-#### 📌 See Dropdown Configuration for the 2 dropdowns in the datepicker.
