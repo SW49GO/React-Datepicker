@@ -6,11 +6,13 @@ import PropTypes from 'prop-types'
 
 function DatePickerReact({onSelect, 
                           textLabel, 
-                          idInput, 
+                          idInput,
+                          iconInputColor, 
                           language, 
                           positionDPR,
                           bckColor,
                           dateColor}){
+
     // Default French Values
     let objMonth = parms.frMonth
     let days = parms.frDay
@@ -38,6 +40,10 @@ function DatePickerReact({onSelect,
         ...parms.styleDatepicker.container,
         backgroundColor: bckColor ?? parms.styleDatepicker.container,
         ...position
+    }
+    const mergedInputIcon = {
+        ...parms.styleDatepicker.dateIcon,
+        color: iconInputColor ?? parms.styleDatepicker.dateIcon
     }
 
     // Default value for the Date
@@ -160,14 +166,14 @@ function DatePickerReact({onSelect,
              <label style={parms.styleDatepicker.labelStyle} htmlFor={idInput}>{textLabel}</label>
              <div style={parms.styleDatepicker.dateInput}>
                 <input ref={inputRef} id={idInput} style={parms.styleDatepicker.dateInputInput} type="text" placeholder={textPlaceholder} defaultValue={dateChoose} required onClick={()=>setIsDateOpen(true)}  onFocus={handleFocus} onKeyDown={handleKeyEnter}/>
-                <FaCalendarDay style={parms.styleDatepicker.dateIcon} onClick={handleClickIcon}/>
+                <FaCalendarDay style={mergedInputIcon} onClick={handleClickIcon}/>
             </div>
         </div>
        {isDateOpen && <div style={mergedContainer}>
             <div style={parms.styleDatepicker.header}>
                 <FaCaretLeft onClick={() =>ChangeMonth('preview')} style={{paddingRight:5}}/>
-                <DropdownReact data={objMonth} initialOption={objMonth[choiceMonth].name}  onSelect={handleMonth} styleContainer={{width:'10rem',paddingRight:'.3125rem'}} styleContainerList={{width:'87%'}}/>
-                {yearsDrop.length>0 && <DropdownReact data={yearsDrop}  initialOption={choiceYear} onSelect={handleYear} styleContainer={{width:'8rem'}} styleContainerList={{width:'87%'}}/>}
+                <DropdownReact data={objMonth} initialOption={objMonth[choiceMonth].name}  onSelect={handleMonth} styleContainer={{width:'10rem',paddingRight:'.3125rem'}} styleHeader={{width:'6rem'}} styleContainerList={{width:'87.5%', scrollbarWidth: 'thin'}}/>
+                {yearsDrop.length>0 && <DropdownReact data={yearsDrop}  initialOption={choiceYear} onSelect={handleYear} styleContainer={{width:'4rem'}} styleContainerList={{width:'85.5%', scrollbarWidth: 'thin'}}/>}
                 <FaHome style={{padding:5, fontSize:'2rem'}} onClick={()=>StartHomeDate()}/>
                 <FaCaretRight onClick={() =>ChangeMonth('next')}/>
             </div>
@@ -199,17 +205,18 @@ function DatePickerReact({onSelect,
                                     <td key={dayIndex} style={{
                                         textAlign:'center',
                                         color: dayIndex === currentDate ? '#fff' : '#000',
-                                        backgroundColor: dayIndex === currentDate ?(bckColor ?? '#3fb0b8')  : dayIndex === selectedDay ? (bckColor ?? '#3fb0b8') : '#fff',
+                                        backgroundColor: dayIndex === currentDate ?(bckColor ?? '#8e8787')  : dayIndex === selectedDay ? (bckColor ?? '#8e8787') : '#fff',
+                                        boxShadow: '3px 5px 3px #000',
                                         borderRadius: '5px',
                                         fontWeight: dayIndex === currentDate || dayIndex === selectedDay ? 'bold' : 'normal',
                                       }}
                                       onClick={() => HandleDayClick(dayIndex)}
                                       onMouseOver={(event) => {
-                                        event.target.style.backgroundColor = dateColor ?? '#3fb0b8'
+                                        event.target.style.backgroundColor = dateColor ?? '#8e8787'
                                         event.target.style.color = '#fff'
                                       }}
                                       onMouseOut={(event) => {
-                                        event.target.style.backgroundColor = dayIndex === selectedDay ? (bckColor ?? '#3fb0b8') : '#fff'
+                                        event.target.style.backgroundColor = dayIndex === selectedDay ? (bckColor ?? '8e8787') : '#fff'
                                         event.target.style.color = dayIndex === selectedDay ? '#fff' : '#000'
                                       }}
                                     >
@@ -226,8 +233,18 @@ function DatePickerReact({onSelect,
                     </tbody>
                 </table>
                 <div style={parms.styleDatepicker.dateFooter}>
-                    <button style={parms.styleDatepicker.dateFooterButton} onClick={()=>CancelDatePicker()}>Annuler</button>
-                    <button style={parms.styleDatepicker.dateFooterButton} onClick={()=>ValidDatePicker()}>Ok</button>
+                    <button style={parms.styleDatepicker.dateFooterButton} 
+                            onClick={()=>CancelDatePicker()}
+                            onMouseOver={(event) => {event.target.style.backgroundColor = '#8e8787'
+                                                     event.target.style.color = '#FFF'}}
+                            onMouseOut={(event) => {event.target.style.backgroundColor = '#FFF'
+                                                    event.target.style.color = '#000'}}>Annuler</button>
+                    <button style={parms.styleDatepicker.dateFooterButton} 
+                            onClick={()=>ValidDatePicker()}
+                            onMouseOver={(event) => {event.target.style.backgroundColor = '#8e8787'
+                                                     event.target.style.color = '#FFF'}}
+                            onMouseOut={(event) => {event.target.style.backgroundColor = '#FFF'
+                                                    event.target.style.color = '#000'}}>Ok</button>
                 </div>
             </div>
         </div>
@@ -242,6 +259,7 @@ DatePickerReact.propTypes = {
     language: PropTypes.string,
     positionCalendar: PropTypes.string,
     bckColor: PropTypes.string,
-    dateColor: PropTypes.string
+    dateColor: PropTypes.string,
+    iconInputColor: PropTypes.string
 }
 export default DatePickerReact

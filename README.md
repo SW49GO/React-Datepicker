@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Datepicker React components created using `create-react-app` by SW49GO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Presentation :
+This is a reusable React component that allows you to display a custom Datepicker in your application.
 
-## Available Scripts
+The component is TypeScript compatible and includes a type definition file (DatepickerReact.d.ts) for an improved development experience. In a TypeScript project, the TypeScript compiler will automatically use this definition file.
 
-In the project directory, you can run:
+### Examples Custom style :
+<img src="https://raw.githubusercontent.com/SW49GO/React-Datepicker/master/public/assets/example.jpg" alt="datepicker"/>
 
-### `npm start`
+## Installing the package in your project:
+```bash
+npm i datepicker-react-sw49go
+```
+## Prerequisites :
+- Node.js v18.16.0
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Dependencies to install :
+- "react": "^18.2.0"
+- "react-dom": "^18.2.0"
+- "prop-types": "^15.8.1"
+- "react-icons": "^5.0.1"
+- "dropdown-react-sw49go": "^0.1.2"
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Imported the component into your project :
+```
+import { DatePickerReact } from 'datepicker-react-sw49go'
 
-### `npm test`
+function App() {
+  const handleSeletedDate = (dateSelected) =>{
+    console.log('The date selected in datepicker:', dateSelected)
+  }
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  return (
+   <div>
+    <DatePickerReact onSelect={handleSeletedDate} 
+                     language={'fr'} 
+                     textLabel={'Votre texte ici' } 
+                     iconInputColor={'blue' }
+                     positionDPR={'top'}
+                     bckColor={'blue'}
+                     dateColor={'red'}/>
+   </div>
+  )
+}
+```
 
-### `npm run build`
+# Using the different component options (Props):
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- textLabel (string) : the text for your Label
+- idInput (string) : the name for the id of input
+- iconInputColor (string) : color for calendar icon in input
+- language (string) : language for informations of datepicker ('fr' default, 'en', or 'de')
+- positionDPR (string) : position of the datepicker, 'bottom' is default position, 'top' for above the input
+- bckColor (string) : background color of the datepicker
+- dateColor (string) : color of the day when mouseOver
+- onSelect (function) : callback function to return the date choosen
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# See Dropdown Configuration for the 2 dropdowns in the datepicker.
