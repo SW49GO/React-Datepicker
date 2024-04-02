@@ -48,7 +48,6 @@ function App() {
 
 # Using the different component options (Props):
 
-<<<<<<< HEAD
 | Props| Type| Default|Description |
 |:--- |:---: |:---: |------|
 |||||
@@ -62,13 +61,3 @@ function App() {
 |`bckColor`|string|N/A|Background color of the datepicker|
 |`dateColor`|string|N/A|Color of the day when mouseOver|
 |`onSelect`|function|N/A|Callback function to return the date choosen|
-=======
-- textLabel (string) : the text for your Label
-- idInput (string) : the name for the id of input
-- iconInputColor (string) : color for calendar icon in input
-- language (string) : language for informations of datepicker ('fr' default, 'en', or 'de')
-- positionDPR (string) : position of the datepicker, 'bottom' is default position, 'top' for above the input
-- bckColor (string) : background color of the datepicker
-- dateColor (string) : color of the day when mouseOver
-- onSelect (function) : callback function to return the date choosen
->>>>>>> abe561a8717343de0506e9eb43caf1220dbc5d8b
