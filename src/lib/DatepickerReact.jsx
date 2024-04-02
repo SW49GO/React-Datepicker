@@ -5,7 +5,9 @@ import React, { useState, useEffect, useRef } from "react"
 import PropTypes from 'prop-types'
 
 function DatePickerReact({onSelect, 
-                          textLabel, 
+                          textLabel,
+                          styleLabel,
+                          styleInput, 
                           idInput,
                           iconInputColor, 
                           language, 
@@ -44,6 +46,18 @@ function DatePickerReact({onSelect,
     const mergedInputIcon = {
         ...parms.styleDatepicker.dateIcon,
         color: iconInputColor ?? parms.styleDatepicker.dateIcon
+    }
+    const mergedStyeInput = {
+        ...parms.styleDatepicker.dateInputInput,
+        ...styleInput
+    }
+    const mergedContainerInput ={
+        ...parms.styleDatepicker.dateInput,
+        width : styleInput.width ?? parms.styleDatepicker.dateInput
+    }
+    const mergedStyleLabel = {
+        ...parms.styleDatepicker.labelStyle,
+        ...styleLabel
     }
 
     // Default value for the Date
@@ -163,9 +177,9 @@ function DatePickerReact({onSelect,
     return (
     <div style={parms.styleDatepicker.datepickerStyle}>
         <div>
-             <label style={parms.styleDatepicker.labelStyle} htmlFor={idInput}>{textLabel}</label>
-             <div style={parms.styleDatepicker.dateInput}>
-                <input ref={inputRef} id={idInput} style={parms.styleDatepicker.dateInputInput} type="text" placeholder={textPlaceholder} defaultValue={dateChoose} required onClick={()=>setIsDateOpen(true)}  onFocus={handleFocus} onKeyDown={handleKeyEnter}/>
+             <label style={mergedStyleLabel} htmlFor={idInput}>{textLabel}</label>
+             <div style={mergedContainerInput}>
+                <input ref={inputRef} id={idInput} style={mergedStyeInput} type="text" placeholder={textPlaceholder} defaultValue={dateChoose} required onClick={()=>setIsDateOpen(true)}  onFocus={handleFocus} onKeyDown={handleKeyEnter}/>
                 <FaCalendarDay style={mergedInputIcon} onClick={handleClickIcon}/>
             </div>
         </div>
@@ -254,8 +268,10 @@ function DatePickerReact({onSelect,
 
 DatePickerReact.propTypes = {
     onSelect: PropTypes.func, 
-    textLabel: PropTypes.string, 
+    textLabel: PropTypes.string,
+    styleLabel: PropTypes.object,
     idInput: PropTypes.string,
+   styleInput: PropTypes.object,
     language: PropTypes.string,
     positionCalendar: PropTypes.string,
     bckColor: PropTypes.string,

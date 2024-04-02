@@ -10,9 +10,10 @@ function App() {
    <div>
     <DatePickerReact onSelect={handleSeletedDate} 
                      language={'fr'} 
-                     textLabel={'Votre texte ici' } 
-                     iconInputColor={'blue' }
-                     positionDPR={'top'}
+                     textLabel={'Votre texte ici' }
+                     styleLabel={{fontSize:'1.5rem'}}
+                     styleInput={{width:'10rem'}}
+                     iconInputColor={'black' }
                      bckColor={'blue'}
                      dateColor={'red'}/>
    </div>

@@ -35,9 +35,10 @@ function App() {
    <div>
     <DatePickerReact onSelect={handleSeletedDate} 
                      language={'fr'} 
-                     textLabel={'Votre texte ici' } 
-                     iconInputColor={'blue' }
-                     positionDPR={'top'}
+                     textLabel={'Votre texte ici' }
+                     styleLabel={{fontSize:'1.5rem'}}
+                     styleInput={{width:'10rem'}}
+                     iconInputColor={'black' }
                      bckColor={'blue'}
                      dateColor={'red'}/>
    </div>
@@ -47,13 +48,16 @@ function App() {
 
 # Using the different component options (Props):
 
-- textLabel (string) : the text for your Label
-- idInput (string) : the name for the id of input
-- iconInputColor (string) : color for calendar icon in input
-- language (string) : language for informations of datepicker ('fr' default, 'en', or 'de')
-- positionDPR (string) : position of the datepicker, 'bottom' is default position, 'top' for above the input
-- bckColor (string) : background color of the datepicker
-- dateColor (string) : color of the day when mouseOver
-- onSelect (function) : callback function to return the date choosen
-
-#### 📌 See Dropdown Configuration for the 2 dropdowns in the datepicker.
+| Props| Type| Default|Description |
+|:--- |:---: |:---: |------|
+|||||
+|`textLabel`|string|N/A|The text for your Label|
+|`styleLabel`|object|N/A|CSS Properties style for Label|
+|`idInput`|string|N/A|The name for 'id' of Input|
+|`iconInputColor`|string|N/A|Color for calendar icon in the Input|
+|`styleInput`|object|N/A|CSS Properties style for Input|
+|`language`|string|'fr'|Language for informations of datepicker ('fr','en','de')|
+|`positionDPR`|string|'bottom'|position of the datepicker ('botton' or 'top')|
+|`bckColor`|string|N/A|Background color of the datepicker|
+|`dateColor`|string|N/A|Color of the day when mouseOver|
+|`onSelect`|function|N/A|Callback function to return the date choosen|

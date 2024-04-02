@@ -4,7 +4,9 @@ import * as React from 'react'
 
 interface DatepickerReactProps {
   textLabel?: string;
+  styleLabel?:React.CSSProperties;
   idInput?: string;
+  styleInput?:React.CSSProperties;
   iconInputColor?: string;
   language?: string;
   positionDPR?: string;

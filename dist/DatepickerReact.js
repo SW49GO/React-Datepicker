@@ -13,9 +13,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function DatePickerReact(_ref) {
+  var _styleInput$width;
   let {
     onSelect,
     textLabel,
+    styleLabel,
+    styleInput,
     idInput,
     iconInputColor,
     language,
@@ -60,6 +63,18 @@ function DatePickerReact(_ref) {
   const mergedInputIcon = {
     ...parms.styleDatepicker.dateIcon,
     color: iconInputColor !== null && iconInputColor !== void 0 ? iconInputColor : parms.styleDatepicker.dateIcon
+  };
+  const mergedStyeInput = {
+    ...parms.styleDatepicker.dateInputInput,
+    ...styleInput
+  };
+  const mergedContainerInput = {
+    ...parms.styleDatepicker.dateInput,
+    width: (_styleInput$width = styleInput.width) !== null && _styleInput$width !== void 0 ? _styleInput$width : parms.styleDatepicker.dateInput
+  };
+  const mergedStyleLabel = {
+    ...parms.styleDatepicker.labelStyle,
+    ...styleLabel
   };
 
   // Default value for the Date
@@ -177,14 +192,14 @@ function DatePickerReact(_ref) {
   return /*#__PURE__*/_react.default.createElement("div", {
     style: parms.styleDatepicker.datepickerStyle
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", {
-    style: parms.styleDatepicker.labelStyle,
+    style: mergedStyleLabel,
     htmlFor: idInput
   }, textLabel), /*#__PURE__*/_react.default.createElement("div", {
-    style: parms.styleDatepicker.dateInput
+    style: mergedContainerInput
   }, /*#__PURE__*/_react.default.createElement("input", {
     ref: inputRef,
     id: idInput,
-    style: parms.styleDatepicker.dateInputInput,
+    style: mergedStyeInput,
     type: "text",
     placeholder: textPlaceholder,
     defaultValue: dateChoose,
@@ -318,7 +333,9 @@ function DatePickerReact(_ref) {
 DatePickerReact.propTypes = {
   onSelect: _propTypes.default.func,
   textLabel: _propTypes.default.string,
+  styleLabel: _propTypes.default.object,
   idInput: _propTypes.default.string,
+  styleInput: _propTypes.default.object,
   language: _propTypes.default.string,
   positionCalendar: _propTypes.default.string,
   bckColor: _propTypes.default.string,
